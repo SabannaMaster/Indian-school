@@ -428,6 +428,99 @@ scroll-behavior:smooth;
         background-color: #444;
     }
 
+
+    /* ================= MOBILE FIX ================= */
+
+@media (max-width: 768px){
+
+/* HERO FIX */
+.hero{
+    padding: 40px 15px;
+    background-size: cover; /* fix image scaling */
+}
+
+.hero h1{
+    margin-top: 120px;   /* reduce huge spacing */
+    font-size: 28px;
+}
+
+.hero p{
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+/* REMOVE NEGATIVE MARGIN ISSUE */
+.hero_1{
+    margin-top: 0;
+}
+
+/* NAVIGATION FIX */
+nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+nav a{
+    margin:5px;
+    font-size:14px;
+    padding:6px 10px;
+}
+
+/* CONTAINER WIDTH */
+.container{
+    width:95%;
+}
+
+/* SECTION PADDING */
+.section{
+    padding:15px;
+}
+
+/* STATS FIX */
+.stats-section h2{
+    font-size:24px;
+}
+
+/* TEXT FIX */
+.section-Quotes{
+    padding:20px;
+    font-size:16px;
+}
+
+/* STAFF */
+.principal-card{
+    width:100%;
+}
+
+.staff-container{
+    grid-template-columns:1fr;
+}
+
+/* SOCIAL ICONS */
+.social-container{
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+/* GALLERY */
+.gallery{
+    grid-template-columns:1fr;
+}
+
+}
+
+/* EXTRA SMALL DEVICES */
+@media (max-width: 480px){
+.hero h1{
+    font-size:22px;
+}
+
+.hero p{
+    font-size:13px;
+}
+}
+    
 </style>
 
 </head>
