@@ -174,27 +174,29 @@ footer {
   </div>
 
   <div class="hero-form">
-    <h3>Admission Enquiry Form</h3>
+    <form onsubmit="sendToWhatsApp(); return false;">
+      <h3>Admission Enquiry Form</h3>
 
-    <input type="text" placeholder="Student Name" required>
-    <input type="text" placeholder="Parent Name" required>
-    <input type="tel" placeholder="Mobile Number" required>
-    <input type="email" placeholder="Email Address">
+      <input type="text" id="student" placeholder="Student Name" required>
+      <input type="text" id="parent" placeholder="Parent Name" required>
+      <input type="tel" id="phone" placeholder="Mobile Number" required>
+      <input type="email" id="email" placeholder="Email Address">
 
-    <select>
-      <option>Select Class</option>
-      <option>Pre-KG</option>
-      <option>LKG</option>
-      <option>UKG</option>
-      <option>1st - 5th</option>
-      <option>6th - 10th</option>
-    </select>
+      <select id="class">
+        <option>Select Class</option>
+        <option>Pre-KG</option>
+        <option>LKG</option>
+        <option>UKG</option>
+        <option>1st - 5th</option>
+        <option>6th - 10th</option>
+      </select>
 
-    <input type="number" placeholder="Student Age">
+      <input type="number" id="age" placeholder="Student Age">
 
-    <textarea rows="3" placeholder="Message / Additional Info"></textarea>
+      <textarea id="message" rows="3" placeholder="Message / Additional Info"></textarea>
 
-    <button type="submit">Submit Enquiry</button>
+      <button type="submit">Submit Enquiry</button>
+    </form>
   </div>
 </section>
 
@@ -225,8 +227,7 @@ footer {
   <h2>About Us</h2>
   <p>
     Indian Primary and High School is committed to providing high-quality education 
-    and nurturing young minds for a bright future. We focus on both academic excellence 
-    and character development.
+    and nurturing young minds for a bright future.
   </p>
 </section>
 
@@ -235,6 +236,41 @@ footer {
   <p>© 2026 Indian Primary and High School</p>
   <p>Devarachikkanahalli, Bangalore – 560076</p>
 </footer>
+
+<!-- WHATSAPP SCRIPT -->
+<script>
+function sendToWhatsApp() {
+
+  let student = document.getElementById("student").value;
+  let parent = document.getElementById("parent").value;
+  let phone = document.getElementById("phone").value;
+  let email = document.getElementById("email").value;
+  let cls = document.getElementById("class").value;
+  let age = document.getElementById("age").value;
+  let msg = document.getElementById("message").value;
+
+  let finalMessage = 
+`🎓 School Admission Enquiry
+
+🏫 Indian Primary & High School
+📍 Devarachikkanahalli, Bangalore - 560076
+
+Student Name: ${student}
+Parent Name: ${parent}
+Phone: ${phone}
+Email: ${email}
+Class: ${cls}
+Age: ${age}
+
+Message: ${msg}`;
+
+  let whatsappNumber = "91XXXXXXXXXX"; // 👉 PUT YOUR NUMBER HERE
+
+  let url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(finalMessage);
+
+  window.open(url, "_blank");
+}
+</script>
 
 </body>
 </html>
