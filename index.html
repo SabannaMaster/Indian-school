@@ -27,33 +27,38 @@ font-family:Segoe UI, sans-serif;
 body{
 background:linear-gradient(120deg,var(--secondary-color),#f0f8ff);
 color:var(--text-color);
+overflow-x: hidden; /* Prevents side-scrolling on mobile */
 }
 
 /* HERO SECTION */
 
 .hero_1{
-    margin-top: -90px;
+    margin-top: 0; /* Adjusted for better spacing */
     margin-bottom: 5px;
     text-align: center;
 }
 
 .hero{
 background:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.9)),url("school_main1.png");
-background-size: 1570px;
+background-size: cover; /* Changed to cover for responsiveness */
 background-position:center;
 color:white;
 text-align: center;
-padding: 90px;
+padding: 40px 20px; /* Reduced padding for mobile */
+min-height: 400px;
+display: flex;
+flex-direction: column;
+justify-content: center;
 }
 
 .hero h1{
-margin-top: 600px;
-margin-bottom: -50px;
-font-size:50px;
+margin-top: 20px;
+margin-bottom: 10px;
+font-size:clamp(28px, 5vw, 50px); /* Adjusts size based on screen */
 }
 
 .hero p{
-margin-top: 50px;
+margin-top: 10px;
 font-size:18px;
 }
 
@@ -63,16 +68,23 @@ nav{
 background:var(--main-color);
 text-align:center;
 padding:12px;
+position: sticky;
+top: 0;
+z-index: 1000;
+display: flex;
+flex-wrap: wrap; /* Allows links to wrap on small screens */
+justify-content: center;
+gap: 10px;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-margin:0 15px;
 font-weight:bold;
-padding:8px 15px;
+padding:8px 12px;
 border-radius:20px;
 transition:.3s;
+font-size: 14px;
 }
 
 nav a:hover{
@@ -83,16 +95,17 @@ color:black;
 /* CONTAINER */
 
 .container{
-width:85%;
+width:92%; /* Slightly wider for mobile */
+max-width: 1200px;
 margin:auto;
-padding:40px 0;
+padding:20px 0;
 }
 
 /* SECTION CARD */
 
 .section{
 background:white;
-padding:25px;
+padding:20px;
 margin-bottom:25px;
 border-radius:var(--card-radius);
 box-shadow:0 8px 20px rgba(0,0,0,.15);
@@ -118,20 +131,21 @@ transform:translateY(-6px);
 .section h2{
 color:var(--main-color);
 margin-bottom:10px;
+font-size: 22px;
 }
 
-/* Section */
+/* Achievement Section */
 .stats-section{
-    padding:80px 20px;
+    padding:40px 10px;
     text-align:center;
 }
 
 .stats-section h2{
-    font-size:34px;
-    margin-bottom:60px;
+    font-size:28px;
+    margin-bottom:30px;
 }
 
-/* Container */
+/* Triangle Container */
 .triangle{
     position:relative;
     max-width:650px;
@@ -142,8 +156,8 @@ margin-bottom:10px;
 /* Glass Cards */
 .card{
     position:absolute;
-    width:200px;
-    padding:25px;
+    width:160px; /* Slimmer for mobile compatibility */
+    padding:15px;
     border-radius:20px;
     text-align:center;
     backdrop-filter: blur(12px);
@@ -153,26 +167,20 @@ margin-bottom:10px;
     transition:0.4s;
 }
 
-/*.card:hover{*/
-/*    transform:translateY(-10px) scale(1.05);*/
-/*    box-shadow:0 0 25px rgba(0,198,255,0.6);*/
-/*}*/
-
 /* Positions */
 .top{ top:0; left:50%; transform:translateX(-50%); }
 .left{ bottom:0; left:0; }
 .right{ bottom:0; right:0; }
 
-/* Text */
 .number{
-    font-size:32px;
+    font-size:28px;
     font-weight:bold;
     color:#00e6ff;
 }
 
 .label{
     margin-top:8px;
-    font-size:15px;
+    font-size:14px;
 }
 
 /* SVG lines */
@@ -198,47 +206,29 @@ line{
     }
 }
 
-/* Animated dots */
 .dot{
     fill:#00e6ff;
     filter:drop-shadow(0 0 6px #00e6ff);
 }
 
-/* Counter Animation */
 .counter{
     display:inline-block;
-}
-
-/* Mobile */
-@media(max-width:600px){
-    .triangle{
-        height:auto;
-    }
-    .card{
-        position:static;
-        margin:15px auto;
-    }
-    svg{
-        display:none;
-    }
 }
 
 /* GALLERY */
 
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); /* Better sizing for mobile */
+gap:10px;
 }
 
 .gallery img{
 width:100%;
+aspect-ratio: 1/1;
+object-fit: cover;
 border-radius:10px;
 transition:.3s;
-}
-
-.gallery img:hover{
-transform:scale(1.05);
 }
 
 /* FOOTER */
@@ -247,15 +237,8 @@ footer{
 background:var(--main-color);
 color:white;
 text-align:center;
-padding:15px;
+padding:20px;
 margin-top:30px;
-}
-
-.school-logo{
-width:120px;
-margin-bottom:15px;
-border-radius:50%;
-border:4px solid white;
 }
 
 html{
@@ -267,18 +250,18 @@ scroll-behavior:smooth;
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:20px;
+    flex-wrap: wrap;
+    gap:15px;
     padding:20px;
     background:white;
 }
 
-/* Icon Style */
 .social-container a{
     text-decoration:none;
     color:white;
-    font-size:22px;
-    width:50px;
-    height:50px;
+    font-size:20px;
+    width:45px;
+    height:45px;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -286,40 +269,33 @@ scroll-behavior:smooth;
     transition:0.3s;
 }
 
-/* Individual Colors */
 .facebook{ background:#1877f2; }
 .youtube{ background:#ff0000; }
 .twitter{ background:#1da1f2; }
 .phone{ background:#28a745; }
 .email{ background:#ff9800; }
 
-/* Hover Effect */
-.social-container a:hover{
-    transform:scale(1.2);
-    box-shadow:0 5px 15px rgba(0,0,0,0.3);
-}
-
-/* Title */
-.section-title{
-    text-align:center;
-    padding:30px 10px;
-    font-size:28px;
-    color:#004aad;
-    font-weight:bold;
-}
-
-/*Staff Quotes */
+/* Staff Quotes */
 .section-Quotes{
     text-align: center;
-    padding: 50px;
-    font-size: 20px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 30px 15px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.section-title{
+    text-align:center;
+    padding:20px 10px;
+    font-size:24px;
+    color:#004aad;
+    font-weight:bold;
 }
 
 /* Principal Section */
 .principal-section{
     display:flex;
     justify-content:center;
+    padding: 0 15px;
     margin-bottom:30px;
 }
 
@@ -327,20 +303,15 @@ scroll-behavior:smooth;
     background:#fff;
     border-radius:20px;
     text-align:center;
-    padding:25px;
-    width:260px;
+    padding:20px;
+    width:100%;
+    max-width:280px;
     box-shadow:0 8px 20px rgba(0,0,0,0.15);
-    transition:0.3s;
 }
 
-.principal-card:hover{
-    transform:scale(1.05);
-}
-
-/* Principal Image */
 .principal-card img{
-    width:140px;
-    height:140px;
+    width:120px;
+    height:120px;
     border-radius:50%;
     object-fit:cover;
     border:5px solid #004aad;
@@ -350,51 +321,69 @@ scroll-behavior:smooth;
 /* Teachers Grid */
 .staff-container{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-    gap:20px;
-    padding:20px;
+    grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); /* Two cards per row on mobile */
+    gap:15px;
+    padding:15px;
 }
 
-/* Teacher Card */
 .staff-card{
     background:#fff;
     border-radius:15px;
     text-align:center;
-    padding:20px;
+    padding:15px;
     box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    transition:0.3s;
 }
 
-.staff-card:hover{
-    transform:translateY(-10px);
-}
-
-/* Images */
 .staff-card img{
-    width:110px;
-    height:110px;
+    width:80px;
+    height:80px;
     border-radius:50%;
     object-fit:cover;
-    border:4px solid #004aad;
+    border:3px solid #004aad;
     margin-bottom:10px;
 }
 
-/* Text */
 .staff-name{
-    font-size:18px;
+    font-size:16px;
     font-weight:bold;
     color:#333;
 }
 
 .staff-role{
-    font-size:14px;
+    font-size:12px;
     color:#777;
-    margin-top:5px;
+}
+
+/* MOBILE SPECIFIC OVERRIDES */
+@media(max-width:600px){
+    .triangle{
+        height:auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .card{
+        position:static;
+        transform: none;
+        width: 80%;
+    }
+    svg{
+        display:none; /* Hide triangle lines on mobile for clarity */
+    }
+    .hero h1 {
+        margin-top: 10px;
+    }
+    nav a {
+        flex: 1 1 30%; /* Makes nav buttons wrap nicely */
+        padding: 6px;
+        font-size: 12px;
+    }
 }
 
 .fade-in {
   opacity: 0;
-  animation: fadeIn 3s ease-in forwards;
+  animation: fadeIn 2s ease-in forwards;
 }
 
 @keyframes fadeIn {
@@ -411,214 +400,125 @@ scroll-behavior:smooth;
 
 @keyframes flicker {
   0% { opacity: 0.5; text-shadow: 0 0 5px #fff; }
-  100% { opacity: 1; text-shadow: 0 0 20px #00c6ff, 0 0 40px #00c6ff; }
+  100% { opacity: 1; text-shadow: 0 0 10px #00c6ff; }
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- HERO -->
-
 <div class="hero_1">
-<div class="hero">
-
-<div class="fade-in">
-<h1>Indian Primary And High School</h1>
+    <div class="hero">
+        <div class="fade-in">
+            <h1>Indian Primary And High School</h1>
+        </div>
+        <div class="slide-up">
+            <p>Devarachikkanahalli, Bengaluru</p>
+        </div>
+    </div>
 </div>
-<div class="slide-up">
-<p>Devarachikkanahalli, Bengaluru</p>
-</div>
-</div>
-</div>
-
-<!-- NAVIGATION -->
 
 <nav>
-<a href="#about">About</a>
-<a href="#facilities">Facilities</a>
-<a href="#gallery">Gallery</a>
-<a href="#contact">Contact</a>
-<a href="https://maps.app.goo.gl/VJ4jTgD3v5BDQDkcA" target="_blank" rel="noopener noreferrer">Location</a>
-<a href="Enquiry.html" target="_blank" rel="noopener noreferrer">Enquire</a>
+    <a href="#about">About</a>
+    <a href="#facilities">Facilities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+    <a href="https://maps.app.goo.gl/VJ4jTgD3v5BDQDkcA" target="_blank">Location</a>
+    <a href="Enquiry.html" target="_blank">Enquire</a>
 </nav>
 
 <div class="container">
 
-<!-- ABOUT -->
-
 <div class="section" id="about">
-<h2>About Our School</h2>
+    <h2>About Our School</h2>
+    <p>
+    Indian Primary And High School is located in Bommanahalli,
+    Bengaluru. The school provides quality education from
+    pre-primary to high school level and focuses on academic
+    excellence and discipline.
+    </p>
 
-<p>
-Indian Primary And High School is located in Bommanahalli,
-Bengaluru. The school provides quality education from
-pre-primary to high school level and focuses on academic
-excellence and discipline.
-</p>
+    <section class="stats-section">
+        <h2>Our Achievements</h2>
+        <div class="triangle">
+            <svg>
+                <defs>
+                    <linearGradient id="grad">
+                        <stop offset="0%" stop-color="#00e6ff"/>
+                        <stop offset="100%" stop-color="#0072ff"/>
+                    </linearGradient>
+                </defs>
+                <line x1="50%" y1="10%" x2="10%" y2="85%"/>
+                <line x1="50%" y1="10%" x2="90%" y2="85%"/>
+                <line x1="10%" y1="85%" x2="90%" y2="85%"/>
+            </svg>
 
-<section class="stats-section">
-    <h2>Our Achievements</h2>
-
-    <div class="triangle">
-
-        <!-- SVG Triangle Lines -->
-        <svg>
-            <defs>
-                <linearGradient id="grad">
-                    <stop offset="0%" stop-color="#00e6ff"/>
-                    <stop offset="100%" stop-color="#0072ff"/>
-                </linearGradient>
-            </defs>
-
-            <!-- Lines -->
-            <line x1="50%" y1="10%" x2="10%" y2="85%"/>
-            <line x1="50%" y1="10%" x2="90%" y2="85%"/>
-            <line x1="10%" y1="85%" x2="90%" y2="85%"/>
-
-            <!-- Moving dots -->
-            <circle class="dot">
-                <animateMotion dur="4s" repeatCount="indefinite"
-                path="M 325 40 L 65 330"/>
-            </circle>
-
-            <circle class="dot">
-                <animateMotion dur="4s" repeatCount="indefinite"
-                path="M 325 40 L 585 330"/>
-            </circle>
-
-            <circle class="dot">
-                <animateMotion dur="4s" repeatCount="indefinite"
-                path="M 65 330 L 585 330"/>
-            </circle>
-
-        </svg>
-
-        <!-- Top -->
-        <div class="card top">
-            <div class="number counter" data-target="2010">0</div>
-            <div class="label">Established</div>
+            <div class="card top">
+                <div class="number counter" data-target="2010">0</div>
+                <div class="label">Established</div>
+            </div>
+            <div class="card left">
+                <div class="number counter" data-target="22">0</div>+
+                <div class="label">Teachers</div>
+            </div>
+            <div class="card right">
+                <div class="number counter" data-target="1000">0</div>+
+                <div class="label">Students</div>
+            </div>
         </div>
-
-        <!-- Left -->
-        <div class="card left">
-            <div class="number counter" data-target="22">0</div>+
-            <div class="label">Teachers</div>
-        </div>
-
-        <!-- Right -->
-        <div class="card right">
-            <div class="number counter" data-target="1000">0</div>+
-            <div class="label">Students</div>
-        </div>
-
-    </div>
     </section>
-
 </div>
-
-<!-- FACILITIES -->
 
 <div class="section" id="facilities">
-
-<h2>School Facilities</h2>
-
-<ul class="facility-list">
-<li>💻 Digital Classrooms</li>
-<li>🖥 Computer Lab</li>
-<li>📚 Library</li>
-<li>⚽ Sports Ground</li>
-<li>💧 Drinking Water Facility</li>
-<li>🚻 Separate Toilets</li>
-</ul>
-
+    <h2>School Facilities</h2>
+    <ul class="facility-list">
+        <li>💻 Digital Classrooms</li>
+        <li>🖥 Computer Lab</li>
+        <li>📚 Library</li>
+        <li>⚽ Sports Ground</li>
+        <li>💧 Drinking Water Facility</li>
+        <li>🚻 Separate Toilets</li>
+    </ul>
 </div>
-
-<!-- GALLERY -->
 
 <div class="section" id="gallery">
+    <h2>School Gallery</h2>
+    <div class="section" id="youtube">
+        <p>Watch our school activities on YouTube.</p>
+        <div style="text-align:center;margin-top:15px;">
+            <a href="https://youtube.com/@indianprimaryandhighschool8581" target="_blank"
+            style="background:red;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;display:inline-block;">
+            ▶ Visit YouTube
+            </a>
+        </div>
+    </div>
 
-<h2>School Gallery</h2>
-<div class="section" id="youtube">
-
-<h2></h2>
-
-<p>Watch our school activities, programs, and student achievements on our YouTube channel.</p>
-<div style="text-align:center;margin-top:15px;">
-<a href="https://youtube.com/@indianprimaryandhighschool8581" target="_blank"
-style="background:red;color:white;padding:10px 20px;border-radius:25px;text-decoration:none;font-weight:bold;">
-▶ Visit Our YouTube Channel
-</a>
+    <div class="gallery">
+        <img src="school1.jpg.png">
+        <img src="school2.jpg.png">
+        <img src="school3.jpg.png">
+        <img src="school4.jpg.jpg">
+    </div>
 </div>
-
-</div>
-
-<div class="gallery">
-
-<img src="school1.jpg.png">
-
-<img src="school2.jpg.png">
-
-<img src="school3.jpg.png">
-
-<img src="school4.jpg.jpg">
-
-</div>
-
-</div>
-
-
-<!-- CONTACT -->
-
-
 
 <div class="section" id="contact">
-
-<h2>Contact</h2>
-
-<p>
-📍 Devarachikkanahalli Begur Rd,<br>
-C Thimma Reddy Layout, Stage 4,<br>
-Bommanahalli, Bengaluru, Karnataka
-</p>
-
-<p>📞 +91 9844182385</p>
-
-<p>📧 info@school.edu</p>
-<br>
-<hr>
-<br>
-
-<div class="section">
-
-<h2>Admissions Open</h2>
-
-<p>
-Admissions are now open for the academic year 2026–2027.
-Parents are welcome to visit the school campus for more
-information about the admission process.
-</p>
-
-<p><b>Classes:</b> Pre-Primary to High School</p>
-
-<p><b>Contact:</b> +91 9844182385</p>
-
-</div>
-</div>
-</div>
-
-<div class="section-Quotes">
-    <div style="text-align:center;margin-top:15px;">
-        Our school is led by a visionary Principal and supported by a team of dedicated teachers who are committed to providing quality education.
-        <br>Together, they create a nurturing and inspiring environment where students can learn, grow, and achieve their full potential.
+    <h2>Contact</h2>
+    <p>📍 Devarachikkanahalli Begur Rd, Bommanahalli, Bengaluru</p>
+    <p>📞 +91 9844182385</p>
+    <br>
+    <div class="section" style="background:#f9f9f9; box-shadow:none; border:1px solid #ddd;">
+        <h3>Admissions Open</h3>
+        <p>Academic year 2026–2027. Pre-Primary to High School.</p>
     </div>
+</div>
+
+</div> <div class="section-Quotes">
+    Our school is led by a visionary Principal and supported by a team of dedicated teachers committed to quality education.
 </div>
 
 <div class="section-title">Our Staff</div>
 
-<!-- Principal (Top Center) -->
 <div class="principal-section">
     <div class="principal-card">
         <img src="https://via.placeholder.com/150" alt="Principal">
@@ -627,79 +527,49 @@ information about the admission process.
     </div>
 </div>
 
-<!-- Teachers -->
 <div class="staff-container">
-
     <div class="staff-card">
         <img src="https://via.placeholder.com/150">
         <div class="staff-name">Mrs. Anitha</div>
-        <div class="staff-role">Mathematics Teacher</div>
+        <div class="staff-role">Maths</div>
     </div>
-
     <div class="staff-card">
         <img src="https://via.placeholder.com/150">
-        <div class="staff-name">Mr. Ravi Kumar</div>
-        <div class="staff-role">Science Teacher</div>
+        <div class="staff-name">Mr. Ravi</div>
+        <div class="staff-role">Science</div>
     </div>
-
     <div class="staff-card">
         <img src="https://via.placeholder.com/150">
         <div class="staff-name">Ms. Priya</div>
-        <div class="staff-role">English Teacher</div>
+        <div class="staff-role">English</div>
     </div>
-
     <div class="staff-card">
         <img src="https://via.placeholder.com/150">
         <div class="staff-name">Mr. Suresh</div>
-        <div class="staff-role">Social Teacher</div>
+        <div class="staff-role">Social</div>
     </div>
-
 </div>
 
 <div class="social-container" id="Enquire">
-    <!-- Font Awesome Icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <a href="https://facebook.com" target="_blank" class="facebook">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-
-    <a href="https://youtube.com" target="_blank" class="youtube">
-        <i class="fab fa-youtube"></i>
-    </a>
-
-    <a href="https://twitter.com" target="_blank" class="twitter">
-        <i class="fab fa-twitter"></i>
-    </a>
-
-    <a href="tel:+919999999999" class="phone">
-        <i class="fas fa-phone"></i>
-    </a>
-
-    <a href="mailto:example@email.com" class="email">
-        <i class="fas fa-envelope"></i>
-    </a>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+    <a href="tel:+919844182385" class="phone"><i class="fas fa-phone"></i></a>
+    <a href="mailto:info@school.edu" class="email"><i class="fas fa-envelope"></i></a>
 </div>
 
 <footer>
-
-<p>© 2026 Indian Primary And High School</p>
-
+    <p>© 2026 Indian Primary And High School</p>
 </footer>
 
 <script>
-// Counter Animation
 const counters = document.querySelectorAll(".counter");
-
 counters.forEach(counter => {
     let target = +counter.getAttribute("data-target");
     let count = 0;
-
     let update = () => {
         let speed = target / 100;
         count += speed;
-
         if(count < target){
             counter.innerText = Math.floor(count);
             requestAnimationFrame(update);
@@ -707,7 +577,6 @@ counters.forEach(counter => {
             counter.innerText = target;
         }
     };
-
     update();
 });
 </script>
